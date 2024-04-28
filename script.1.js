@@ -65,8 +65,8 @@ xhr.onload = function () {
 // The first argument is the post type (GET, POST, PUT, DELETE, etc.)
 // The second argument is the endpoint URL
 // Asynchronous request, so not waiting
-xhr.open('GET', 'https://api.rss2json.com/v1/api.json?rss_url=https://hacks.mozilla.org/rss');
-xhr.send();
+xhr.open('GET', 'https://www.eagle-eye.com/');
+xhr.send();rss
 
 
 // Perhaps Google for some locally relevant RSS feeds.
