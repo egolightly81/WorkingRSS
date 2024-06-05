@@ -1,7 +1,7 @@
 /*
 Description: Minimal styling for in-class exercise
-Author: Emerald Golightly
-Email: emerald.golightly@student.curtin.edu
+Author: EmeraldGolightly
+Email: EmeraldGolightly@student.curtin.edu
 Tags: RSS Reader
 */
 
@@ -16,17 +16,17 @@ body {
 header {
   width: 100%;
   overflow: hidden;
-  background-color: #131212;
-  color: rgb(252, 249, 249);
+  background-color: #333;
+  color: white;
   text-align: center;
   padding: 10px;
 
 }
 
 /* Style the content */
-main {
-  margin: 0 auto;
-  width: 80%;
+content {
+  float: left;
+  width: 100%;
   padding: 20px;
 }
 
