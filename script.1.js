@@ -44,6 +44,36 @@ function buildFeed(data) {
   content.appendChild(titleElement);
   content.appendChild(itemsContainer);
 }
+// Function to handle adding a new RSS feed
+function onAddRSSClicked(event) {
+  let URL = newRSSInput.value;
+  newRSSInput.value = "";
+  // Setup the XMLHttpRequest object and send the request
+  xhr.open('GET', 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(URL));
+  xhr.send();
+}
+
+// Set up the XMLHttpRequest object
+let xhr = new XMLHttpRequest();
+xhr.onload = function () {
+  // Process the returned data
+  if (xhr.status >= 200 && xhr.status < 300) {
+    let json = JSON.parse(xhr.responseText);
+    console.log(json);
+    buildFeed(json);
+  } else {
+    // Handle the request failure
+    console.log('The request failed!');
+    content.innerHTML = "The request for a RSS feed failed, please check your URL";
+  }
+};
+
+// Event listeners for the button and input field
+let addFeedButton = document.getElementById("add-feed");
+let newRSSInput = document.getElementById("rss-input");
+
+addFeedButton.addEventListener('click', onAddRSSClicked);
+
 
 // Fetch a RSS feed on page load
 xhr.open('GET', 'https://api.rss2json.com/v1/api.json?rss_url=http%3A%2F%2Fwww.bom.gov.au%2Ffwo%2FIDZ00060.warnings_wa.xml');
