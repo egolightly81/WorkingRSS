@@ -44,6 +44,7 @@ function buildFeed(data) {
   content.appendChild(titleElement);
   content.appendChild(itemsContainer);
 }
+
 // Function to handle adding a new RSS feed
 function onAddRSSClicked(event) {
   let URL = newRSSInput.value;
@@ -74,7 +75,6 @@ let newRSSInput = document.getElementById("rss-input");
 
 addFeedButton.addEventListener('click', onAddRSSClicked);
 
-
-// Fetch a RSS feed on page load
+// Fetch a default RSS feed on page load
 xhr.open('GET', 'https://api.rss2json.com/v1/api.json?rss_url=http%3A%2F%2Fwww.bom.gov.au%2Ffwo%2FIDZ00060.warnings_wa.xml');
 xhr.send();
