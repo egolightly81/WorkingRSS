@@ -1,37 +1,47 @@
 // Get the content element where articles will be displayed
-let content = document.getElementsByTagName('content')[0];
+let content = document.getElementsByTagName('main')[0];
 
 // Function to build and display the RSS feed
 function buildFeed(data) {
+  // Clear any previous content
+  content.innerHTML = '';
+
   // Create the 'outer' container to hold everything
   let itemsContainer = document.createElement('DIV');
 
-  // For each item, add a title, link, and description
-  for (let i = 0, t = data.items.length; i < t; ++i) {
-    let item = data.items[i]; // Get the item
+  // For each item, add a title, link, description, and publication date
+  data.items.forEach(item => {
     // Create a container to hold title, link, description
     let itemContainer = document.createElement('DIV');
+    itemContainer.classList.add('item-container');
+
+    // Create and update the title element
+    let itemTitleElement = document.createElement('H2');
+    itemTitleElement.innerText = item.title;
 
     // Create and update the link element
     let itemLinkElement = document.createElement('A');
     itemLinkElement.setAttribute('href', item.link);
-    itemLinkElement.innerText = item.title;
+    itemLinkElement.setAttribute('target', '_blank'); // Open link in a new tab
+    itemLinkElement.innerText = 'Read more';
 
-    // Create and update the title (use link as title, so title is clickable)
-    let itemTitleElement = document.createElement('H2');
-    itemTitleElement.appendChild(itemLinkElement);
-
-    // Create and update the description
+    // Create and update the description element
     let itemDescriptionElement = document.createElement('P');
     itemDescriptionElement.innerHTML = item.description; // Make sure the content is XSS safe before using innerHTML
 
-    // Add title and description to the item container
+    // Create and update the publication date element
+    let itemPubDateElement = document.createElement('P');
+    itemPubDateElement.innerText = `Published on: ${new Date(item.pubDate).toLocaleString()}`;
+
+    // Add title, description, publication date, and link to the item container
     itemContainer.appendChild(itemTitleElement);
     itemContainer.appendChild(itemDescriptionElement);
+    itemContainer.appendChild(itemPubDateElement);
+    itemContainer.appendChild(itemLinkElement);
 
     // Add the item container to the outer container
     itemsContainer.appendChild(itemContainer);
-  }
+  });
 
   // Create and add the title of the RSS source
   let titleElement = document.createElement('H1');
@@ -72,6 +82,6 @@ let newRSSInput = document.getElementById("rss-input");
 
 addFeedButton.addEventListener('click', onAddRSSClicked);
 
-// Optionally, fetch a default RSS feed on page load
+// Fetch a default RSS feed on page load
 xhr.open('GET', 'https://api.rss2json.com/v1/api.json?rss_url=http%3A%2F%2Fwww.bom.gov.au%2Ffwo%2FIDZ00060.warnings_wa.xml');
 xhr.send();

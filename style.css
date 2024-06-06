@@ -1,16 +1,10 @@
-/*
-Description: Minimal styling for in-class exercise
-Author: EmeraldGolightly
-Email: EmeraldGolightly@student.curtin.edu
-Tags: RSS Reader
-*/
-
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
   box-sizing: border-box;
 }
 
+/* Style the top navigation bar */
 header {
   width: 100%;
   overflow: hidden;
@@ -20,39 +14,37 @@ header {
   padding: 10px;
 }
 
-form {
-  margin: 10px 0;
-}
-
-input {
-  padding: 5px;
-  width: 300px;
-}
-
-button {
-  padding: 5px 10px;
-}
-
+/* Style the content */
 main {
   float: left;
   width: 100%;
   padding: 20px;
 }
 
-article {
-  border-bottom: 1px solid #ccc;
-  padding: 10px 0;
+.item-container {
+  border: 1px solid #ddd;
+  margin: 10px 0;
+  padding: 10px;
 }
 
-h3 a {
+.item-container h2 {
+  margin: 0 0 10px 0;
+}
+
+.item-container p {
+  margin: 5px 0;
+}
+
+.item-container a {
+  color: #1e90ff;
   text-decoration: none;
-  color: #333;
 }
 
-h3 a:hover {
+.item-container a:hover {
   text-decoration: underline;
 }
 
+/* Style the footer */
 footer {
   clear: both;
   text-align: center;
