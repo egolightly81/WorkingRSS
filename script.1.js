@@ -3,21 +3,18 @@ let content = document.getElementsByTagName('content')[0];
 
 // Function to build and display the RSS feed
 function buildFeed(data) {
-  // Clear any previous content
-  content.innerHTML = '';
-
   // Create the 'outer' container to hold everything
   let itemsContainer = document.createElement('DIV');
 
   // For each item, add a title, link, and description
-  data.items.forEach(item => {
+  for (let i = 0, t = data.items.length; i < t; ++i) {
+    let item = data.items[i]; // Get the item
     // Create a container to hold title, link, description
     let itemContainer = document.createElement('DIV');
 
     // Create and update the link element
     let itemLinkElement = document.createElement('A');
     itemLinkElement.setAttribute('href', item.link);
-    itemLinkElement.setAttribute('target', '_blank'); // Open link in a new tab
     itemLinkElement.innerText = item.title;
 
     // Create and update the title (use link as title, so title is clickable)
@@ -34,7 +31,7 @@ function buildFeed(data) {
 
     // Add the item container to the outer container
     itemsContainer.appendChild(itemContainer);
-  });
+  }
 
   // Create and add the title of the RSS source
   let titleElement = document.createElement('H1');
@@ -75,6 +72,6 @@ let newRSSInput = document.getElementById("rss-input");
 
 addFeedButton.addEventListener('click', onAddRSSClicked);
 
-// Fetch a default RSS feed on page load
+// Optionally, fetch a default RSS feed on page load
 xhr.open('GET', 'https://api.rss2json.com/v1/api.json?rss_url=http%3A%2F%2Fwww.bom.gov.au%2Ffwo%2FIDZ00060.warnings_wa.xml');
 xhr.send();
