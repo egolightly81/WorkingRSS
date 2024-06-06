@@ -9,10 +9,8 @@ body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
   box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
 }
 
-/* Style the top navigation bar */
 header {
   width: 100%;
   overflow: hidden;
@@ -20,22 +18,45 @@ header {
   color: white;
   text-align: center;
   padding: 10px;
-
 }
 
-/* Style the content */
-content {
+form {
+  margin: 10px 0;
+}
+
+input {
+  padding: 5px;
+  width: 300px;
+}
+
+button {
+  padding: 5px 10px;
+}
+
+main {
   float: left;
   width: 100%;
   padding: 20px;
 }
 
-/* Style the footer */
+article {
+  border-bottom: 1px solid #ccc;
+  padding: 10px 0;
+}
+
+h3 a {
+  text-decoration: none;
+  color: #333;
+}
+
+h3 a:hover {
+  text-decoration: underline;
+}
+
 footer {
   clear: both;
   text-align: center;
   width: 100%;
-  /* background-color: #f1f1f1; */
 }
 
 footer a {
